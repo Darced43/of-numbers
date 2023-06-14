@@ -1,4 +1,35 @@
+body {
+    background-image: url('../img/1644981964_9-phonoteka-org-p-seif-fon-10.jpg');
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .main {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+}
+
+.wrapper {
+    max-width: 1920px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.col-form-label {
+    color: white;
+    font-size: 42px !important;
+    font-weight: bold;
+    -webkit-text-stroke: 2px black;
+}
+
+#result {
+    font-size: 20px;
+    color: black;
+    -webkit-text-stroke: 2px rgba(182, 3, 3, 0.548);
 }

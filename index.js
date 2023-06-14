@@ -1,9 +1,10 @@
 
   //объявляем переменные
   const btn = document.querySelector('.start')
+  const btnStop = document.querySelector('.stop')
   const password = document.querySelector('.password')
   const totalCount = null
-
+  const result = document.querySelector('#result')
 
   var base = 60;
   var clocktimer, dateObj, dh, dm, ds, ms;
@@ -15,6 +16,7 @@
     ts = 0,
     ms = 0,
     init = 0;
+
   //функция для очистки поля
   function ClearСlock() {
     clearTimeout(clocktimer);
@@ -28,6 +30,7 @@
     readout = '00:00:00.00';
     document.MyForm.stopwatch.value = readout;
   }
+
   //функция для старта секундомера
   function StartTIME() {
     var cdateObj = new Date();
@@ -104,20 +107,43 @@
     }
   }
 
+  function Start() {
+    if (init == 0) {
+      ClearСlock();
+      dateObj = new Date();
+      StartTIME();
+      init = 1;
+      console.log('start')
+      }
+    }
+
+  function Stop() {
+    if(init == 1)
+      clearTimeout(clocktimer);
+      init = 0;
+      console.log('finish')
+    }
+
 // функция перебора значений от 0 до 100000
 function getNumber(totalCount){
-    for(let i = 0; i < 10001; i++){
-        if(i === Number(password.value)){
-            totalCount = i
-        }
-        console.log(totalCount)
-        StartStop()
+    for(let i = 0; i < 9999999; i++){
+      if(i === Number(password.value)){
+        totalCount = i
+        result.innerText = totalCount
+        return
+      }
+      console.log(i)
     }
 }
 
-function allFunction (){
-    StartStop(),
-    getNumber()
+function allFunction (totalCount){
+  Start()
+  // getNumber(totalCount),
+  // Stop()
 }
 
-  btn.addEventListener('click', allFunction)
+  btn.addEventListener('click', () => {
+    allFunction ()
+  })
+
+  btnStop.addEventListener('click', () => Stop())
